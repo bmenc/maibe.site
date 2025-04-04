@@ -19,16 +19,15 @@ import * as React from "react";
 
 import { Alignment, Button, Navbar, NavbarDivider, NavbarGroup, NavbarHeading } from "@blueprintjs/core";
 
-export const NavbarExample: React.FC<{}> = props => {
+export const NavbarExample: React.FC<unknown> = () => {
     return (
-
-            <Navbar>
-                <NavbarGroup align={Alignment.START}>
-                    <NavbarHeading>Blueprint</NavbarHeading>
-                    <NavbarDivider />
-                    <Button icon="home" text="Home" variant="minimal" />
-                    <Button icon="document" text="Files" variant="minimal" />
-                </NavbarGroup>
-            </Navbar>
+        <Navbar>
+            <NavbarGroup align={Alignment.START}>
+                <NavbarHeading>Blueprint</NavbarHeading>
+                <NavbarDivider />
+                <Button icon="home" text="Home" variant="minimal" />
+                <Button icon="document" text="Files" variant="minimal" />
+            </NavbarGroup>
+        </Navbar>
     );
 };
