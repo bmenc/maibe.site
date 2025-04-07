@@ -20,7 +20,7 @@ import { Icon, InputGroup, Menu, MenuDivider, MenuItem, type Size, Button, Popov
 
 export function MenuExample() {
     const [count, setCount] = React.useState(0);
-    const [size, setSize] = React.useState<Size>("small");
+    const [size] = React.useState<Size>("small");
 
     return (
         <>
