@@ -16,7 +16,7 @@
 
 import * as React from "react";
 
-import { Classes, H5, Icon, InputGroup, Menu, MenuDivider, MenuItem, type Size, Button, Popover, Position } from "@blueprintjs/core";
+import { Icon, InputGroup, Menu, MenuDivider, MenuItem, type Size, Button, Popover, Position } from "@blueprintjs/core";
 
 export function MenuExample() {
     const [count, setCount] = React.useState(0);
