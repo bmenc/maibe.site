@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { MenuExample } from "./components/blueprint/menuExample";
 
 
 export const metadata: Metadata = {
