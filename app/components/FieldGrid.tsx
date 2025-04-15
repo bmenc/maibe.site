@@ -37,17 +37,17 @@ export default function FieldGrid({ columns, fields, editingAll }: FieldGridProp
       <div className={`grid ${getColumnClass(columns)} gap-2`}>
         {fields.map((field, index) => (
           <FormGroup
-            key={index}
+            key={index} 
             label={
               editingIndex === index || editingAll ? (
                 <EditableText
                   selectAllOnFocus={true}
-                  value={`Field ${index + 1}`}
+                  value={`Label ${index + 1}`}
                   onChange={() => {}}
                   className="w-full border-2 p-1 rounded-sm border-gray-300 shadow-inner" 
                 />
               ) : (
-                `Field ${index + 1}`
+                `Label ${index + 1}`
               )
             }
             labelFor={String(index)}
@@ -62,7 +62,7 @@ export default function FieldGrid({ columns, fields, editingAll }: FieldGridProp
               <>
                 <EditableText
                   selectAllOnFocus={true}
-                  value={field}
+                  value={`Placeholder`}
                   onChange={() => {}}
                   className="w-full border-2 p-1 rounded-sm border-gray-300 shadow-inner" 
                 />
@@ -75,7 +75,7 @@ export default function FieldGrid({ columns, fields, editingAll }: FieldGridProp
                 />
               </>
             ) : (
-              <InputGroup id={String(index)} placeholder="Placeholder text" fill />
+              <InputGroup id={String(index)} fill />
             )}
             {editingAll || editingIndex === index ? (
               <Button
