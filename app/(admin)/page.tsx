@@ -6,8 +6,9 @@ import FieldGrid from "@/app/components/FieldGrid";
 export default function Home() {
   const [config, setConfig] = useState({
     fields: [] as string[],
-    columns: 4,
+    columns: 5,
   });
+  const [editingAll, setEditingAll] = useState(false);
 
   const addField = () => {
     setConfig((prevConfig) => ({
@@ -23,11 +24,21 @@ export default function Home() {
     }));
   };
 
+  const toggleAllEditButtons = () => {
+    setEditingAll((prev) => !prev);
+  };
+
   return (
     <main className="flex flex-col mt-4">
-      <Menu addField={addField} updateColumns={updateColumns} />
+      <Menu addField={addField} updateColumns={updateColumns} toggleAllEditButtons={toggleAllEditButtons} />
       <div className="flex flex-col justify-between items-center p-4 mt-2">
-        <FieldGrid columns={config.columns} fields={config.fields} addField={addField} updateColumns={updateColumns} />
+        <FieldGrid 
+          columns={config.columns} 
+          fields={config.fields} 
+          addField={addField} 
+          updateColumns={updateColumns} 
+          editingAll={editingAll} 
+        />
       </div>
     </main>
   );
