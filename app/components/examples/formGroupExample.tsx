@@ -72,7 +72,7 @@ export const FormGroupExample: FC<ExampleProps> = props => {
 
     return (
         <Example 
-            // options={options} 
+            options={options} 
             {...props}>
             <Card style={{ width: fill ? "inherit" : "fit-content" }}>
                 <FormGroup
