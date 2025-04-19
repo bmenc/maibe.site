@@ -1,5 +1,5 @@
 "use client";
-import { FormGroupCustom } from "@/app/components/examples/formGroupCustom";
+import { FormGroupCustom } from "@/app/components/formGroupCustom";
 
 export default function Home() {
 

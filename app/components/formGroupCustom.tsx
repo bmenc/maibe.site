@@ -1,10 +1,6 @@
 import * as React from "react";
 import { FC, useState, useEffect } from "react";
-import {
-    FormGroup,
-    InputGroup,
-    Intent,
-} from "@blueprintjs/core";
+import { FormGroup, InputGroup, Intent } from "@blueprintjs/core";
 
 interface FormGroupProps {
     initialState?: {
@@ -30,19 +26,17 @@ const defaultState = {
 };
 
 export const FormGroupCustom: FC<FormGroupProps> = ({ initialState, onStateChange }) => {
-    const [state, setState] = useState({ ...defaultState, ...initialState });
-    const [intent, setIntent] = useState<Intent>(Intent.NONE);
+    const [state] = useState({ ...defaultState, ...initialState });
+    const intent = Intent.NONE;
 
     useEffect(() => {
-        if (onStateChange) {
-            onStateChange(state);
-        }
+        onStateChange?.(state);
     }, [state, onStateChange]);
 
     const { disabled, helperText, fill, inline, label, requiredLabel, subLabel } = state;
 
     return (
-        <div style={{ width: fill ? "inherit" : "fit-content" }} >
+        <div style={{ width: fill ? "inherit" : "fit-content" }}>
             <FormGroup
                 {...{ disabled, fill, inline, intent }}
                 helperText={helperText && "Helper text with details..."}
