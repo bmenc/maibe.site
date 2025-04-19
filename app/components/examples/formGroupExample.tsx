@@ -1,21 +1,5 @@
-/*
- * Copyright 2018 Palantir Technologies, Inc. All rights reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 import * as React from "react";
-
+import { FC, useState, useEffect } from "react";
 import {
     Card,
     Classes,
@@ -30,18 +14,25 @@ import {
     Tooltip,
 } from "@blueprintjs/core";
 import { Example, type ExampleProps, handleBooleanChange } from "@blueprintjs/docs-theme";
-
 import { IntentSelect } from "./common/intentSelect";
 
-export const FormGroupExample: React.FC<ExampleProps> = props => {
-    const [disabled, setDisabled] = React.useState(false);
-    const [helperText, setHelperText] = React.useState(false);
-    const [fill, setFill] = React.useState(false);
-    const [inline, setInline] = React.useState(false);
-    const [intent, setIntent] = React.useState<Intent>(Intent.NONE);
-    const [label, setLabel] = React.useState(true);
-    const [requiredLabel, setRequiredLabel] = React.useState(true);
-    const [subLabel, setSubLabel] = React.useState(false);
+export const FormGroupExample: FC<ExampleProps> = props => {
+    const [intent, setIntent] = useState<Intent>(Intent.NONE);
+    const [state, setState] = useState({
+        disabled: false,
+        helperText: false,
+        fill: false,
+        inline: false,
+        label: false,
+        requiredLabel: false,
+        subLabel: false,
+    });
+
+    const {disabled, helperText, fill, inline, label, requiredLabel, subLabel} = state;
+
+    const handleSwitchChange = (key: keyof typeof state) => handleBooleanChange(
+        (value: boolean) => setState(prev => ({ ...prev, [key]: value }))
+    );
 
     const intentLabelInfo = (
         <Tooltip
@@ -67,21 +58,23 @@ export const FormGroupExample: React.FC<ExampleProps> = props => {
     const options = (
         <>
             <H5>Props</H5>
-            <Switch label="Disabled" checked={disabled} onChange={handleBooleanChange(setDisabled)} />
-            <Switch label="Fill" checked={fill} onChange={handleBooleanChange(setFill)} />
-            <Switch label="Inline" checked={inline} onChange={handleBooleanChange(setInline)} />
-            <Switch label="Show helper text" checked={helperText} onChange={handleBooleanChange(setHelperText)} />
-            <Switch label="Show label" checked={label} onChange={handleBooleanChange(setLabel)} />
-            <Switch label="Show label info" checked={requiredLabel} onChange={handleBooleanChange(setRequiredLabel)} />
-            <Switch label="Show sub label" checked={subLabel} onChange={handleBooleanChange(setSubLabel)} />
+            <Switch label="Disabled" checked={disabled} onChange={handleSwitchChange("disabled")} />
+            <Switch label="Fill" checked={fill} onChange={handleSwitchChange("fill")} />
+            <Switch label="Inline" checked={inline} onChange={handleSwitchChange("inline")} />
+            <Switch label="Show helper text" checked={helperText} onChange={handleSwitchChange("helperText")} />
+            <Switch label="Show label" checked={label} onChange={handleSwitchChange("label")} />
+            <Switch label="Show label info" checked={requiredLabel} onChange={handleSwitchChange("requiredLabel")} />
+            <Switch label="Show sub label" checked={subLabel} onChange={handleSwitchChange("subLabel")} />
             <Divider />
             <IntentSelect intent={intent} label={intentLabelInfo} onChange={setIntent} showClearButton={true} />
         </>
     );
 
     return (
-        <Example options={options} {...props}>
-            <Card style={{ width: fill ? "100%" : undefined }}>
+        <Example 
+            // options={options} 
+            {...props}>
+            <Card style={{ width: fill ? "inherit" : "fit-content" }}>
                 <FormGroup
                     {...{ disabled, fill, inline, intent }}
                     helperText={helperText && "Helper text with details..."}
@@ -91,15 +84,6 @@ export const FormGroupExample: React.FC<ExampleProps> = props => {
                     subLabel={subLabel && "Label helper text with details..."}
                 >
                     <InputGroup id="text-input" placeholder="Placeholder text" disabled={disabled} intent={intent} />
-                </FormGroup>
-                <FormGroup
-                    {...{ disabled, fill, inline, intent }}
-                    helperText={helperText && "Helper text with details..."}
-                    label={label && "Label"}
-                    labelInfo={requiredLabel && "(required)"}
-                >
-                    <Switch label="Engage the hyperdrive" disabled={disabled} />
-                    <Switch label="Initiate thrusters" disabled={disabled} />
                 </FormGroup>
             </Card>
         </Example>
