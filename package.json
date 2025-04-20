@@ -11,9 +11,12 @@
   "dependencies": {
     "@blueprintjs/core": "^5.17.6",
     "@blueprintjs/docs-theme": "^5.3.31",
+    "@hookform/resolvers": "^5.0.1",
     "next": "14.2.23",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-hook-form": "^7.56.0",
+    "zod": "^3.24.3"
   },
   "devDependencies": {
     "@types/node": "^20",

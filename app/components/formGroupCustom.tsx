@@ -3,50 +3,71 @@ import { FC, useState, useEffect } from "react";
 import { FormGroup, InputGroup, Intent } from "@blueprintjs/core";
 
 interface FormGroupProps {
-    initialState?: {
-        disabled?: boolean;
-        helperText?: boolean;
-        fill?: boolean;
-        inline?: boolean;
-        label?: boolean;
-        requiredLabel?: boolean;
-        subLabel?: boolean;
-    };
-    onStateChange?: (state: typeof defaultState) => void;
+  name: string;
+  placeholder: string;
+  helperText?: string;
+  label?: string;
+  labelInfo?: string;
+  subLabel?: string;
+  config: {
+    disabled?: boolean;
+    helperText?: boolean;
+    fill?: boolean;
+    inline?: boolean;
+    label?: boolean;
+    requiredLabel?: boolean;
+    subLabel?: boolean;
+  };
+  initialState?: typeof defaultState;
+  onStateChange?: (state: typeof defaultState) => void;
 }
 
 const defaultState = {
-    disabled: false,
-    helperText: false,
-    fill: false,
-    inline: false,
-    label: true,
-    requiredLabel: true,
-    subLabel: false,
+  disabled: false,
+  helperText: false,
+  fill: false,
+  inline: true,
+  label: true,
+  requiredLabel: true,
+  subLabel: false,
 };
 
-export const FormGroupCustom: FC<FormGroupProps> = ({ initialState, onStateChange }) => {
-    const [state] = useState({ ...defaultState, ...initialState });
-    const intent = Intent.NONE;
+export const FormGroupCustom: FC<FormGroupProps> = ({
+  placeholder,
+  helperText,
+  label,
+  labelInfo,
+  subLabel,
+  config,
+  initialState,
+  onStateChange,
+}) => {
+  const [state] = useState({ ...defaultState, ...config, ...initialState });
+  const intent = Intent.NONE;
 
-    useEffect(() => {
-        onStateChange?.(state);
-    }, [state, onStateChange]);
+  useEffect(() => {
+    onStateChange?.(state);
+  }, [state, onStateChange]);
 
-    const { disabled, helperText, fill, inline, label, requiredLabel, subLabel } = state;
+  const { disabled, fill, inline } = state;
 
-    return (
-        <div style={{ width: fill ? "inherit" : "fit-content" }}>
-            <FormGroup
-                {...{ disabled, fill, inline, intent }}
-                helperText={helperText && "Helper text with details..."}
-                label={label && "Label"}
-                labelFor="text-input"
-                labelInfo={requiredLabel && "(required)"}
-                subLabel={subLabel && "Label helper text with details..."}
-            >
-                <InputGroup id="text-input" placeholder="Placeholder text" disabled={disabled} intent={intent} />
-            </FormGroup>
-        </div>
-    );
+  return (
+    <div style={{ width: fill ? "inherit" : "fit-content" }}>
+      <FormGroup
+        {...{ disabled, fill, inline, intent }}
+        helperText={state.helperText ? helperText : undefined}
+        label={state.label ? label : undefined}
+        labelFor="text-input"
+        labelInfo={state.requiredLabel ? labelInfo : undefined}
+        subLabel={state.subLabel ? subLabel : undefined}
+      >
+        <InputGroup
+          id="text-input"
+          placeholder={placeholder}
+          disabled={disabled}
+          intent={intent}
+        />
+      </FormGroup>
+    </div>
+  );
 };

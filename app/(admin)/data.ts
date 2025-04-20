@@ -1,0 +1,47 @@
+export const formFields = [
+    {
+      name: "firstName",
+      placeholder: "Nombre",
+      helperText: "Escribe tu nombre completo",
+      label: "Nombre",
+      labelInfo: "(requerido)",
+      subLabel: "Este campo no puede quedar vacío",
+      config: {
+        helperText: false,
+        label: true,
+        requiredLabel: true,
+        subLabel: false,
+        inline: false,
+      },
+    },
+    {
+      name: "lastName",
+      placeholder: "Apellido",
+      helperText: "Escribe tu apellido",
+      label: "Apellido",
+      labelInfo: "",
+      subLabel: "",
+      config: {
+        helperText: false,
+        label: true,
+        requiredLabel: true,
+        subLabel: false,
+        inline: false,
+      },
+    },
+    {
+      name: "email",
+      placeholder: "Correo electrónico",
+      helperText: "Debes ingresar un correo válido",
+      label: "Correo",
+      labelInfo: "(obligatorio)",
+      subLabel: "Usaremos este correo para contactarte",
+      config: {
+        helperText: false,
+        label: true,
+        requiredLabel: true,
+        subLabel: false,
+        inline: false,
+      },
+    },
+  ];
