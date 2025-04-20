@@ -33,6 +33,7 @@ const defaultState = {
 };
 
 export const FormGroupCustom: FC<FormGroupProps> = ({
+  name,
   placeholder,
   helperText,
   label,
@@ -57,12 +58,12 @@ export const FormGroupCustom: FC<FormGroupProps> = ({
         {...{ disabled, fill, inline, intent }}
         helperText={state.helperText ? helperText : undefined}
         label={state.label ? label : undefined}
-        labelFor="text-input"
+        labelFor={name} 
         labelInfo={state.requiredLabel ? labelInfo : undefined}
         subLabel={state.subLabel ? subLabel : undefined}
       >
         <InputGroup
-          id="text-input"
+          id={name} 
           placeholder={placeholder}
           disabled={disabled}
           intent={intent}
