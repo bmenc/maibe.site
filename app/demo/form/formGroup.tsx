@@ -5,7 +5,7 @@ import { H4, Button, Divider } from "@blueprintjs/core";
 import { useForm, Controller } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CustomField } from "@/app/components/customField";
+import { CustomField } from "@/app/demo/form/customField";
 import { formFields } from "./data";
 
 const generateSchema = () => {

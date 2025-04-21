@@ -14,7 +14,7 @@ export const formFields = [
       minLength: "El nombre no puede estar vacío"
     },
     config: {
-      requiredLabel: true
+      requiredLabel: true,
     }
   },
   {
