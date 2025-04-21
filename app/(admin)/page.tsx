@@ -1,30 +1,14 @@
 "use client";
 
 import * as React from "react";
-import { FormGroupCustom } from "@/app/components/formGroupCustom";
-import { formFields } from "./data";
+import { FormGroup } from "./formGroup";
 
 export default function Home() {
+  const title = "Formulario de prueba";
+
   return (
-    <main className="w-full p-4 flex flex-wrap gap-4">
-      {formFields.map((field) => (
-        <FormGroupCustom
-          key={field.name}
-          name={field.name}
-          placeholder={field.placeholder}
-          config={field.config}
-          label={field.label}
-          labelInfo={field.labelInfo}
-          helperText={field.helperText}
-          subLabel={field.subLabel}
-          initialState={{
-            disabled: false,
-            fill: false,
-            ...field.config,
-          }}
-          onStateChange={(state) => console.log(`Campo: ${field.name}`, state)}
-        />
-      ))}
+    <main className="p-4 flex flex-col gap-2">
+      <FormGroup title={title} />
     </main>
   );
 }

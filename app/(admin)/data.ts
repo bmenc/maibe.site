@@ -1,47 +1,52 @@
 export const formFields = [
-    {
-      name: "firstName",
-      placeholder: "Nombre",
-      helperText: "Escribe tu nombre completo",
-      label: "Nombre",
-      labelInfo: "(requerido)",
-      subLabel: "Este campo no puede quedar vacío",
-      config: {
-        helperText: false,
-        label: true,
-        requiredLabel: true,
-        subLabel: false,
-        inline: false,
-      },
+  {
+    name: "firstName",
+    placeholder: "Nombre",
+    label: "Nombre",
+    labelInfo: "(requerido)",
+    helperText: "Escribe tu nombre completo",
+    subLabel: "Este campo no puede quedar vacío",
+    required: true,
+    minLength: 1,
+    email: false,
+    errorMessages: {
+      required: "El nombre es obligatorio",
+      minLength: "El nombre no puede estar vacío"
     },
-    {
-      name: "lastName",
-      placeholder: "Apellido",
-      helperText: "Escribe tu apellido",
-      label: "Apellido",
-      labelInfo: "",
-      subLabel: "",
-      config: {
-        helperText: false,
-        label: true,
-        requiredLabel: true,
-        subLabel: false,
-        inline: false,
-      },
+    config: {
+      requiredLabel: true
+    }
+  },
+  {
+    name: "lastName",
+    placeholder: "Apellido",
+    label: "Apellido",
+    helperText: "Escribe tu apellido",
+    required: false,
+    minLength: 0,
+    errorMessages: {
+      // required: "El apellido es obligatorio",
+      // minLength: "El apellido no puede estar vacío"
     },
-    {
-      name: "email",
-      placeholder: "Correo electrónico",
-      helperText: "Debes ingresar un correo válido",
-      label: "Correo",
-      labelInfo: "(obligatorio)",
-      subLabel: "Usaremos este correo para contactarte",
-      config: {
-        helperText: false,
-        label: true,
-        requiredLabel: true,
-        subLabel: false,
-        inline: false,
-      },
+    config: {
+      requiredLabel: false
+    }
+  },
+  {
+    name: "email",
+    placeholder: "Correo electrónico",
+    label: "Correo",
+    labelInfo: "(obligatorio)",
+    helperText: "Debes ingresar un correo válido",
+    subLabel: "Usaremos este correo para contactarte",
+    required: true,
+    email: true,
+    errorMessages: {
+      required: "El correo es obligatorio",
+      email: "Debe ser un correo válido"
     },
-  ];
+    config: {
+      requiredLabel: true
+    }
+  }
+];
