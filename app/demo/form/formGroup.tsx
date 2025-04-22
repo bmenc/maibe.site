@@ -93,9 +93,8 @@ export function FormGroup({ title }: { title: string }) {
                   inputRef={ref}
                   config={field.config}
                   type={field.type}
-                  options={field.options} // Pasamos las opciones al componente
-                  onClear={() => onChange("")} // Manejamos el botón de limpiar
-                  type={field.type} // Aseguramos que el tipo de campo se pase correctamente
+                  options={field.options} 
+                  onClear={() => onChange("")} 
                 />
               )}
             />

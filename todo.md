@@ -1,9 +1,13 @@
 React Server Action.
-Estado Global de Redux.
+State Global Redux.
 
-campos:
-text_area
-buscadores con checkbox
-selector_buscador[prediccion]
-arreglo menu
-modal de confirmacion
+Text area
+Checkbox
+Radio
+Select (npm)
+Breadcrumbs
+Toast
+File input
+
+Button group
+Alert
