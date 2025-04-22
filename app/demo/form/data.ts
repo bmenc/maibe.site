@@ -93,5 +93,24 @@ export const formFields = [
     config: {
       requiredLabel: true,
     }
+  },
+  {
+    name: "country",
+    placeholder: "Selecciona un país",
+    label: "País",
+    helperText: "Elige tu país de residencia",
+    required: true,
+    type: "select",
+    options: [
+      { label: "México", value: "MX" },
+      { label: "Estados Unidos", value: "US" },
+      { label: "Canadá", value: "CA" },
+    ],
+    errorMessages: {
+      required: "El país es obligatorio",
+    },
+    config: {
+      requiredLabel: true,
+    },
   }
 ];

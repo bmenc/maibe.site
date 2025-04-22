@@ -13,7 +13,7 @@ export default function FormPage() {
 
   return (
     <main className="p-4 flex flex-col gap-2">
-      <FormGroupExample id="" />
+      {/* <FormGroupExample id="" /> */}
       <FormGroup title={title} />
       <PrevisualizerJSON data={data} />
       <SimplePhoneInput />

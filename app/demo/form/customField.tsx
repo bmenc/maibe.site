@@ -1,6 +1,6 @@
 import * as React from "react";
 import { FC, useState, useEffect } from "react";
-import { FormGroup, InputGroup, Intent } from "@blueprintjs/core";
+import { FormGroup, InputGroup, Intent, ControlGroup, HTMLSelect, Button } from "@blueprintjs/core";
 
 interface FormGroupProps {
   name: string;
@@ -20,9 +20,11 @@ interface FormGroupProps {
     requiredLabel?: boolean;
     subLabel?: boolean;
   };
-  onStateChange?: (state: { value: string }) => void;
+  onStateChange?: (state: { value: string; touched?: boolean }) => void;
   inputRef?: React.Ref<HTMLInputElement>;
   type?: string;
+  options?: { label: string; value: string }[];
+  onClear?: () => void;
 }
 
 const defaultState = {
@@ -47,21 +49,33 @@ export const CustomField: FC<FormGroupProps> = ({
   config,
   onStateChange,
   inputRef,
-  type = "text", // Valor predeterminado para el tipo
+  type = "text",
+  options,
+  onClear,
 }) => {
   const [state] = useState({ ...defaultState, ...config });
+  const [touched, setTouched] = useState(false);
   const intent = error ? Intent.DANGER : Intent.NONE;
 
   useEffect(() => {
     if (onStateChange) onStateChange({ value });
   }, [value, onStateChange]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const newValue = e.target.value;
     if (onStateChange) {
-      onStateChange({ value: newValue });
+      onStateChange({ value: newValue, touched: true });
     }
   };
+
+  const handleBlur = () => {
+    setTouched(true);
+    if (onStateChange) {
+      onStateChange({ value, touched: true });
+    }
+  };
+
+  const shouldShowError = state.requiredLabel && touched && value === "";
 
   return (
     <div style={{ width: state.fill ? "inherit" : "fit-content" }}>
@@ -72,20 +86,53 @@ export const CustomField: FC<FormGroupProps> = ({
         helperText={state.helperText ? helperText : undefined}
         subLabel={state.subLabel ? subLabel : undefined}
         intent={intent}
+        style={{ marginBottom: "2px" }}
       >
-        <InputGroup
-          id={name}
-          placeholder={placeholder}
-          value={value}
-          inputRef={inputRef}
-          onChange={handleInputChange}
-          disabled={state.disabled}
-          intent={intent}
-          type={type || "text"} 
-          style={{color: "gray", width: "200px"}}
-        />
+        {type === "select" ? (
+          <ControlGroup fill={state.fill}>
+            <HTMLSelect
+              id={name}
+              value={value}
+              onChange={(e) => handleInputChange(e as React.ChangeEvent<HTMLSelectElement>)}
+              onBlur={handleBlur}
+              fill={true}
+              style={{
+                width: "200px",
+                border: shouldShowError ? "1px solid red" : undefined,
+              }}
+            >
+              <option value="">{placeholder}</option>
+              {options?.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </HTMLSelect>
+            {onClear && (
+              <Button
+                aria-label="Clear"
+                icon="cross"
+                onClick={() => onClear()}
+                disabled={!value}
+              />
+            )}
+          </ControlGroup>
+        ) : (
+          <InputGroup
+            id={name}
+            placeholder={placeholder}
+            value={value}
+            inputRef={inputRef}
+            onChange={handleInputChange}
+            onBlur={handleBlur}
+            disabled={state.disabled}
+            intent={intent}
+            type={type || "text"} 
+            style={{color: "gray", width: "200px"}}
+          />
+        )}
       </FormGroup>
-      {error && <span className="text-red-500 text-sm">{error}</span>}
+      {error && <span className="text-red-700 text-xs">{error}</span>}
     </div>
   );
 };

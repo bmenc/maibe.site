@@ -92,7 +92,9 @@ export function FormGroup({ title }: { title: string }) {
                   error={errors[field.name]?.message as string}
                   inputRef={ref}
                   config={field.config}
-                  type={field.type} 
+                  type={field.type}
+                  options={field.options} // Pasamos las opciones al componente
+                  onClear={() => onChange("")} // Manejamos el botón de limpiar
                 />
               )}
             />
