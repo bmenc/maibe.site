@@ -1,6 +1,6 @@
 import * as React from "react";
 import { FC, useState, useEffect } from "react";
-import { FormGroup, InputGroup, Intent, ControlGroup, HTMLSelect, Button } from "@blueprintjs/core";
+import { FormGroup, InputGroup, Intent, ControlGroup, HTMLSelect, Button, TextArea } from "@blueprintjs/core";
 import InputMask from "react-input-mask";
 
 interface FormGroupProps {
@@ -62,7 +62,7 @@ export const CustomField: FC<FormGroupProps> = ({
     if (onStateChange) onStateChange({ value });
   }, [value, onStateChange]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const newValue = e.target.value;
     if (onStateChange) {
       onStateChange({ value: newValue, touched: true });
@@ -166,6 +166,25 @@ export const CustomField: FC<FormGroupProps> = ({
               />
             )}
           </InputMask>
+        ) : type === "textarea" ? (
+          <TextArea
+            id={name}
+            placeholder={placeholder}
+            value={value}
+            inputRef={inputRef as React.Ref<HTMLTextAreaElement>}
+            onChange={(e) => handleInputChange(e as React.ChangeEvent<HTMLTextAreaElement>)}
+            onBlur={handleBlur}
+            disabled={state.disabled}
+            intent={intent}
+            growVertically={true}
+            fill={state.fill}
+            style={{
+              color: "#1d1d1d",
+              resize: "vertical",
+              width: "200px",
+              border: shouldShowError ? "1px solid red" : undefined,
+            }}
+          />
         ) : (
           <InputGroup
             id={name}
