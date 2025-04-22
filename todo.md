@@ -2,7 +2,6 @@ React Server Action.
 Estado Global de Redux.
 
 campos:
-fecha [mascara]
 hora [mascara]
 text_area
 tablas 6 cols + accion

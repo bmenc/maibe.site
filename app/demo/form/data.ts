@@ -62,5 +62,19 @@ export const formFields = [
     config: {
       requiredLabel: true
     }
+  },
+  {
+    name: "time",
+    placeholder: "Hora",
+    label: "Hora",
+    helperText: "Selecciona una hora válida",
+    required: true,
+    type: "time",
+    errorMessages: {
+      required: "La hora es obligatoria"
+    },
+    config: {
+      requiredLabel: true
+    }
   }
 ];
