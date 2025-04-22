@@ -112,5 +112,20 @@ export const formFields = [
     config: {
       requiredLabel: true,
     },
+  },
+  {
+    name: "phone",
+    placeholder: "99-99-99-99-99",
+    label: "Teléfono",
+    labelInfo: "(requerido)",
+    helperText: "Ingresa un número de teléfono válido",
+    required: true,
+    type: "phone",
+    errorMessages: {
+      required: "El teléfono es obligatorio",
+    },
+    config: {
+      requiredLabel: true,
+    },
   }
 ];

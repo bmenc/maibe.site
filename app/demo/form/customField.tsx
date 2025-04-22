@@ -1,6 +1,7 @@
 import * as React from "react";
 import { FC, useState, useEffect } from "react";
 import { FormGroup, InputGroup, Intent, ControlGroup, HTMLSelect, Button } from "@blueprintjs/core";
+import InputMask from "react-input-mask";
 
 interface FormGroupProps {
   name: string;
@@ -117,6 +118,30 @@ export const CustomField: FC<FormGroupProps> = ({
               />
             )}
           </ControlGroup>
+        ) : type === "phone" ? (
+          <InputMask
+            mask="99-99-99-99-99"
+            maskChar={null}
+            value={value}
+            onChange={(e) => handleInputChange(e as React.ChangeEvent<HTMLInputElement>)}
+            onBlur={handleBlur}
+            disabled={state.disabled}
+          >
+            {(inputProps) => (
+              <InputGroup
+                {...inputProps}
+                id={name}
+                placeholder={placeholder}
+                inputRef={inputRef}
+                intent={intent}
+                style={{
+                  color: "#1d1d1d",
+                  width: "200px",
+                  border: shouldShowError ? "1px solid red" : undefined,
+                }}
+              />
+            )}
+          </InputMask>
         ) : (
           <InputGroup
             id={name}
@@ -128,7 +153,7 @@ export const CustomField: FC<FormGroupProps> = ({
             disabled={state.disabled}
             intent={intent}
             type={type || "text"} 
-            style={{color: "gray", width: "200px"}}
+            style={{color: "#1d1d1d", width: "200px"}}
           />
         )}
       </FormGroup>

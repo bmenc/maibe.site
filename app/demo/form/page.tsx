@@ -4,7 +4,7 @@ import * as React from "react";
 import { FormGroup } from "./formGroup";
 import { formFields } from "./data";
 import PrevisualizerJSON from "@/app/demo/form/PrevisualizerJSON";
-import {FormGroupExample} from "@/app/components/blueprint-core/formGroupExample";
+// import {FormGroupExample} from "@/app/components/blueprint-core/formGroupExample";
 import SimplePhoneInput from "./InputMask"
 
 export default function FormPage() {
