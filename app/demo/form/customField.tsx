@@ -22,6 +22,7 @@ interface FormGroupProps {
   };
   onStateChange?: (state: { value: string }) => void;
   inputRef?: React.Ref<HTMLInputElement>;
+  type?: string;
 }
 
 const defaultState = {
@@ -46,6 +47,7 @@ export const CustomField: FC<FormGroupProps> = ({
   config,
   onStateChange,
   inputRef,
+  type = "text", // Valor predeterminado para el tipo
 }) => {
   const [state] = useState({ ...defaultState, ...config });
   const intent = error ? Intent.DANGER : Intent.NONE;
@@ -57,7 +59,7 @@ export const CustomField: FC<FormGroupProps> = ({
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
     if (onStateChange) {
-      onStateChange({ value: newValue }); // Siempre actualiza, incluso con cadena vacía
+      onStateChange({ value: newValue });
     }
   };
 
@@ -79,6 +81,8 @@ export const CustomField: FC<FormGroupProps> = ({
           onChange={handleInputChange}
           disabled={state.disabled}
           intent={intent}
+          type={type || "text"} 
+          style={{color: "gray", width: "200px"}}
         />
       </FormGroup>
       {error && <span className="text-red-500 text-sm">{error}</span>}

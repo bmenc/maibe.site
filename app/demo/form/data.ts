@@ -48,5 +48,19 @@ export const formFields = [
     config: {
       requiredLabel: true
     }
+  },
+  {
+    name: "dateOfBirth",
+    placeholder: "Fecha de nacimiento",
+    label: "Fecha de Nacimiento",
+    helperText: "Selecciona tu fecha de nacimiento",
+    required: true,
+    type: "date",
+    errorMessages: {
+      required: "La fecha de nacimiento es obligatoria"
+    },
+    config: {
+      requiredLabel: true
+    }
   }
 ];

@@ -81,6 +81,7 @@ export function FormGroup({ title }: { title: string }) {
                   error={errors[field.name]?.message as string}
                   inputRef={ref}
                   config={field.config}
+                  type={field.type} 
                 />
               )}
             />
