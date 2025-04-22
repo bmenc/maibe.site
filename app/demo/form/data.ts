@@ -127,5 +127,20 @@ export const formFields = [
     config: {
       requiredLabel: true,
     },
+  },
+  {
+    name: "postalCode",
+    placeholder: "00000",
+    label: "Código Postal",
+    labelInfo: "(requerido)",
+    helperText: "Ingresa un código postal válido",
+    required: true,
+    type: "postalCode",
+    errorMessages: {
+      required: "El código postal es obligatorio",
+    },
+    config: {
+      requiredLabel: true,
+    },
   }
 ];

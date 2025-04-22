@@ -142,6 +142,30 @@ export const CustomField: FC<FormGroupProps> = ({
               />
             )}
           </InputMask>
+        ) : type === "postalCode" ? (
+          <InputMask
+            mask="99999"
+            maskChar={null}
+            value={value}
+            onChange={(e) => handleInputChange(e as React.ChangeEvent<HTMLInputElement>)}
+            onBlur={handleBlur}
+            disabled={state.disabled}
+          >
+            {(inputProps) => (
+              <InputGroup
+                {...inputProps}
+                id={name}
+                placeholder={placeholder}
+                inputRef={inputRef}
+                intent={intent}
+                style={{
+                  color: "#1d1d1d",
+                  width: "200px",
+                  border: shouldShowError ? "1px solid red" : undefined,
+                }}
+              />
+            )}
+          </InputMask>
         ) : (
           <InputGroup
             id={name}
