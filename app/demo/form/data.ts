@@ -57,7 +57,7 @@ export const formFields = [
     required: true,
     type: "date",
     errorMessages: {
-      required: "La fecha de nacimiento es obligatoria"
+      required: "La fecha es obligatoria"
     },
     config: {
       requiredLabel: true
@@ -75,6 +75,23 @@ export const formFields = [
     },
     config: {
       requiredLabel: true
+    }
+  },
+  {
+    name: "age",
+    placeholder: "Edad",
+    label: "Edad",
+    labelInfo: "(requerido)",
+    helperText: "Ingresa tu edad en años",
+    required: true,
+    type: "number",
+    minValue: 0, 
+    errorMessages: {
+      required: "La edad es obligatoria",
+      minValue: "La edad no puede ser menor a 0", 
+    },
+    config: {
+      requiredLabel: true,
     }
   }
 ];

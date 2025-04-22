@@ -9,7 +9,7 @@ import { CustomField } from "@/app/demo/form/customField";
 import { formFields } from "./data";
 
 const generateSchema = () => {
-  const schema: Record<string, z.ZodString> = {};
+  const schema: Record<string, z.ZodTypeAny> = {};
   
   formFields.forEach((field) => {
     let fieldSchema = z.string();
@@ -30,8 +30,19 @@ const generateSchema = () => {
         field.errorMessages?.email || "Debe ser un correo válido"
       );
     }
-    
-    schema[field.name] = fieldSchema;
+
+    if (field.type === "number") {
+      const numberSchema = z.preprocess(
+        (value) => (typeof value === "string" ? parseFloat(value) : value),
+        z.number().min(
+          field.minValue ?? 0,
+          field.errorMessages?.minValue || `El valor mínimo es ${field.minValue ?? 0}`
+        )
+      );
+      schema[field.name] = numberSchema;
+    } else {
+      schema[field.name] = fieldSchema;
+    }
   });
   
   return z.object(schema);
