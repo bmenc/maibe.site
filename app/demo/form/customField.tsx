@@ -98,7 +98,7 @@ export const CustomField: FC<FormGroupProps> = ({
               onBlur={handleBlur}
               fill={true}
               style={{
-                width: "200px",
+                width: "170px",
                 border: shouldShowError ? "1px solid red" : undefined,
               }}
             >
