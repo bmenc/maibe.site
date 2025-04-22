@@ -148,13 +148,13 @@ export const formFields = [
     placeholder: "Escribe tus comentarios",
     label: "Comentarios",
     helperText: "Proporcione cualquier comentario adicional",
-    required: false,
+    required: true, // Cambiado de false a true
     type: "textarea",
     errorMessages: {
       required: "Los comentarios son obligatorios",
     },
     config: {
-      requiredLabel: false,
+      requiredLabel: true, // Cambiado de false a true
     },
   }
 ];
