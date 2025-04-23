@@ -156,5 +156,32 @@ export const formFields = [
     config: {
       requiredLabel: true, // Cambiado de false a true
     },
+  },
+  {
+    name: "movie",
+    placeholder: "Busca una película",
+    label: "Película favorita",
+    helperText: "Selecciona o escribe tu película favorita",
+    required: true,
+    type: "suggest",
+    options: [
+      { label: "El Padrino", value: "The Godfather" },
+      { label: "Pulp Fiction", value: "Pulp Fiction" },
+      { label: "El Señor de los Anillos", value: "The Lord of the Rings" },
+    ],
+    errorMessages: {
+      required: "Debes seleccionar una película",
+    },
+    config: {
+      requiredLabel: true,
+      openOnKeyDown: true,
+      allowCreate: true,
+      closeOnSelect: true,
+      matchTargetWidth: true,
+      minimal: true,
+      resetOnClose: false,
+      resetOnQuery: true,
+      resetOnSelect: false,
+    },
   }
 ];
