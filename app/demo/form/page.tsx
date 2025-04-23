@@ -6,6 +6,7 @@ import { formFields } from "./data";
 import PrevisualizerJSON from "@/app/demo/form/PrevisualizerJSON";
 // import {FormGroupExample} from "@/app/components/blueprint-core/formGroupExample";
 import SimplePhoneInput from "./InputMask"
+import { SuggestExample } from "@/app/components/suggestExample";
 
 export default function FormPage() {
   const title = "Formulario de prueba";
@@ -14,6 +15,7 @@ export default function FormPage() {
   return (
     <main className="p-4 flex flex-col gap-2">
       {/* <FormGroupExample id="" /> */}
+      <SuggestExample id={""}/>
       <FormGroup title={title} />
       <PrevisualizerJSON data={data} />
       <SimplePhoneInput />
