@@ -158,19 +158,19 @@ export const formFields = [
     },
   },
   {
-    name: "movie",
-    placeholder: "Busca una película",
-    label: "Película favorita",
-    helperText: "Selecciona o escribe tu película favorita",
+    name: "suggest",
+    placeholder: "Busca una prueba",
+    label: "Pruebas",
+    helperText: "Selecciona una prueba",
     required: true,
     type: "suggest",
     options: [
-      { label: "El Padrino", value: "The Godfather" },
-      { label: "Pulp Fiction", value: "Pulp Fiction" },
-      { label: "El Señor de los Anillos", value: "The Lord of the Rings" },
+      { label: "Prueba 001", value: "1" },
+      { label: "Prueba 002", value: "2" },
+      { label: "Prueba 003", value: "3" },
     ],
     errorMessages: {
-      required: "Debes seleccionar una película",
+      required: "Debes seleccionar una prueba",
     },
     config: {
       requiredLabel: true,

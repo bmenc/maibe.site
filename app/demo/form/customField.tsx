@@ -147,7 +147,7 @@ export const CustomField: FC<FormGroupProps> = ({
         helperText={state.helperText ? helperText : undefined}
         subLabel={state.subLabel ? subLabel : undefined}
         intent={intent}
-        style={{ marginBottom: "2px" }}
+        style={{ marginBottom: "2px", width: "200px" }}
       >
         {type === "suggest" ? (
           <StringSuggest
@@ -181,6 +181,7 @@ export const CustomField: FC<FormGroupProps> = ({
                 : undefined
             }
             fill={state.fill}
+            // style={{color: "red"}} 
           />
         ) : type === "select" ? (
           <ControlGroup fill={state.fill}>
@@ -191,7 +192,7 @@ export const CustomField: FC<FormGroupProps> = ({
               onBlur={handleBlur}
               fill={true}
               style={{
-                width: "170px",
+                width: "200px",
                 border: shouldShowError ? "1px solid red" : undefined,
               }}
             >
