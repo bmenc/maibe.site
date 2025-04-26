@@ -94,7 +94,7 @@ export function FormGroup({ title }: { title: string }) {
                   config={field.config}
                   type={field.type}
                   options={field.options} 
-                  onClear={() => onChange("")} 
+                  // onClear={() => onChange("")  } 
                 />
               )}
             />
@@ -104,7 +104,6 @@ export function FormGroup({ title }: { title: string }) {
           <Button type="submit" text="Guardar" />
         </div>
       </form>
-      <Divider/>
     </>
   );
 }

@@ -1,14 +1,17 @@
 import * as React from "react";
 import { FC, useState, useEffect } from "react";
-import { 
-  FormGroup, 
-  InputGroup, 
-  Intent, 
-  ControlGroup, 
-  HTMLSelect, 
-  Button, 
+import {
+  FormGroup,
+  InputGroup,
+  Intent,
+  ControlGroup,
+  HTMLSelect,
   TextArea,
   MenuItem,
+  Checkbox,
+  RadioGroup,
+  Radio,
+  FileInput
 } from "@blueprintjs/core";
 import { Suggest } from "@blueprintjs/select";
 import { type ItemRenderer } from "@blueprintjs/select";
@@ -41,11 +44,12 @@ interface FormGroupProps {
     resetOnSelect?: boolean;
     openOnKeyDown?: boolean;
   };
-  onStateChange?: (state: { value: string; touched?: boolean }) => void;
+  // onStateChange?: (state: { value: string; touched?: boolean }) => void;
+  onStateChange?: (params: { value: string | string[]; touched: boolean }) => void;
   inputRef?: React.Ref<HTMLInputElement>;
   type?: string;
   options?: { label: string; value: string }[];
-  onClear?: () => void;
+  // onClear?: () => void;
 }
 
 const defaultState = {
@@ -112,14 +116,13 @@ export const CustomField: FC<FormGroupProps> = ({
   inputRef,
   type = "text",
   options,
-  onClear,
 }) => {
   const [state] = useState({ ...defaultState, ...config });
   const [touched, setTouched] = useState(false);
   const intent = error ? Intent.DANGER : Intent.NONE;
 
   useEffect(() => {
-    if (onStateChange) onStateChange({ value });
+    if (onStateChange) onStateChange({ value, touched: false });
   }, [value, onStateChange]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -176,12 +179,12 @@ export const CustomField: FC<FormGroupProps> = ({
             resetOnSelect={state.resetOnSelect}
             openOnKeyDown={state.openOnKeyDown}
             createNewItemFromQuery={
-              state.allowCreate 
-                ? (query) => query 
+              state.allowCreate
+                ? (query) => query
                 : undefined
             }
             fill={state.fill}
-            // style={{color: "red"}} 
+          // style={{color: "red"}} 
           />
         ) : type === "select" ? (
           <ControlGroup fill={state.fill}>
@@ -193,7 +196,7 @@ export const CustomField: FC<FormGroupProps> = ({
               fill={true}
               style={{
                 width: "200px",
-                border: shouldShowError ? "1px solid red" : undefined,
+                // border: shouldShowError ? "1px solid red" : undefined,
               }}
             >
               <option value="">{placeholder}</option>
@@ -203,14 +206,14 @@ export const CustomField: FC<FormGroupProps> = ({
                 </option>
               ))}
             </HTMLSelect>
-            {onClear && (
+            {/* {onClear && (
               <Button
                 aria-label="Clear"
                 icon="cross"
                 onClick={() => onClear()}
                 disabled={!value}
               />
-            )}
+            )} */}
           </ControlGroup>
         ) : type === "phone" ? (
           <InputMask
@@ -279,6 +282,61 @@ export const CustomField: FC<FormGroupProps> = ({
               border: shouldShowError ? "1px solid red" : undefined,
             }}
           />
+        ) : type === "checkbox" ? (
+          <div style={{ display: "flex", flexDirection: state.inline ? "row" : "column", gap: "4px" }}>
+            {options?.map((option) => (
+              <Checkbox
+                key={option.value}
+                label={option.label}
+                checked={Array.isArray(value) ? value.includes(option.value) : false}
+                onChange={(e) => {
+                  const checked = e.target.checked;
+                  let newValue: string[] = Array.isArray(value) ? [...value] : [];
+                  if (checked) {
+                    newValue.push(option.value);
+                  } else {
+                    newValue = newValue.filter((v) => v !== option.value);
+                  }
+                  onStateChange?.({ value: newValue, touched: true });
+                }}
+                disabled={state.disabled}
+              />
+            ))}
+          </div>
+        ) : type === "radio" ? (
+          <RadioGroup
+            name={name}
+            selectedValue={value}
+            onChange={(e) => {
+              onStateChange?.({ value: (e.target as HTMLInputElement).value, touched: true });
+            }}
+            inline={state.inline}
+            disabled={state.disabled}
+          >
+            {options?.map((option) => (
+              <Radio key={option.value} label={option.label} value={option.value} />
+            ))}
+          </RadioGroup>
+        ) : type === "file" ? (
+          <FileInput
+            text={value ? typeof value === "string"
+              ? value
+              : (value as File).name || "Archivo seleccionado"
+              : placeholder}
+            inputProps={{
+              id: name,
+              onBlur: handleBlur,
+              disabled: state.disabled,
+            }}
+            disabled={state.disabled}
+            fill={state.fill}
+            onInputChange={(e) => {
+              const file = (e.target as HTMLInputElement).files?.[0];
+              if (file) {
+                onStateChange?.({ value: file.name, touched: true });
+              }
+            }}
+          />
         ) : (
           <InputGroup
             id={name}
@@ -289,9 +347,9 @@ export const CustomField: FC<FormGroupProps> = ({
             onBlur={handleBlur}
             disabled={state.disabled}
             intent={intent}
-            type={type || "text"} 
+            type={type || "text"}
             style={{
-              color: "#1d1d1d", 
+              color: "#1d1d1d",
               width: "200px",
               border: shouldShowError ? "1px solid red" : undefined,
             }}

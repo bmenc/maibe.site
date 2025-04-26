@@ -183,5 +183,48 @@ export const formFields = [
       resetOnQuery: true,
       resetOnSelect: false,
     },
-  }
+  },
+  {
+    name: "preferences",
+    placeholder: "Elige tus preferencias",
+    label: "Preferencias",
+    helperText: "Selecciona una o más opciones",
+    required: false,
+    type: "checkbox",
+    options: [
+      { label: "Opción A", value: "A" },
+      { label: "Opción B", value: "B" },
+      { label: "Opción C", value: "C" },
+    ],
+    config: {
+      requiredLabel: false,
+    },
+  },
+  {
+    name: "gender",
+    placeholder: "Selecciona tu género",
+    label: "Género",
+    helperText: "Selecciona uno",
+    required: true,
+    type: "radio",
+    options: [
+      { label: "Masculino", value: "male" },
+      { label: "Femenino", value: "female" },
+      { label: "Otro", value: "other" },
+    ],
+    config: {
+      requiredLabel: true,
+    },
+  },
+  {
+    name: "resume",
+    placeholder: "Sube tu CV",
+    label: "Currículum",
+    helperText: "Archivo PDF o Word",
+    required: true,
+    type: "file",
+    config: {
+      requiredLabel: true,
+    },
+  },
 ];

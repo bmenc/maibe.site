@@ -13,7 +13,7 @@ export default function SimplePhoneInput() {
       onChange={(e) => setPhone(e.target.value)}
     >
       {(inputProps) => {
-        const { ...safeProps } = inputProps; // Removed 'defaultValue'
+        const { ...safeProps } = inputProps;
         return (
           <InputGroup
             {...safeProps}

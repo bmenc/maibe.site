@@ -8,7 +8,8 @@ File input
 Navbar
 Menu
 Breadcrumbs
-Toast
-
 Button group
+
+Toast
 Alert
+Dialog
