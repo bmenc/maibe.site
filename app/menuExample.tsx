@@ -3,13 +3,14 @@
 
 import * as React from "react";
 
-import { Classes, H5, Icon, InputGroup, Menu, MenuDivider, MenuItem, type Size } from "@blueprintjs/core";
-import { Example, type ExampleProps } from "@blueprintjs/docs-theme";
+import { Classes, Icon, Menu, MenuDivider, MenuItem, type Size } from "@blueprintjs/core";
+import { type ExampleProps } from "@blueprintjs/docs-theme";
 
 
 export function MenuExample(props: ExampleProps) {
+console.log('props :', props);
     const [count, setCount] = React.useState(0);
-    const [size, setSize] = React.useState<Size>("medium");
+    const [size] = React.useState<Size>("medium");
 
 
     return (

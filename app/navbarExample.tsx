@@ -2,11 +2,11 @@
 import {MenuExample} from "./menuExample"
 import * as React from "react";
 
-import { Alignment, Button, H5, Navbar, NavbarDivider, NavbarGroup, NavbarHeading, Switch } from "@blueprintjs/core";
-import { type ExampleProps, handleBooleanChange } from "@blueprintjs/docs-theme";
+import { Alignment, Button, Navbar, NavbarDivider, NavbarGroup, NavbarHeading } from "@blueprintjs/core";
+import { type ExampleProps } from "@blueprintjs/docs-theme";
 
-export const NavbarExample: React.FC<ExampleProps> = props => {
-    const [alignEnd, setAlignEnd] = React.useState(false);
+export const NavbarExample: React.FC<ExampleProps> = () => {
+    const [alignEnd] = React.useState(false);
 
     return (
         <Navbar>
