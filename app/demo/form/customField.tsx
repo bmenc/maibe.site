@@ -283,7 +283,7 @@ export const CustomField: FC<FormGroupProps> = ({
             }}
           />
         ) : type === "checkbox" ? (
-          <div style={{ display: "flex", flexDirection: state.inline ? "row" : "column", gap: "4px" }}>
+          <div style={{ display: "flex", flexDirection: state.inline ? "row" : "column", gap: "4px"}}>
             {options?.map((option) => (
               <Checkbox
                 key={option.value}
@@ -335,6 +335,11 @@ export const CustomField: FC<FormGroupProps> = ({
               if (file) {
                 onStateChange?.({ value: file.name, touched: true });
               }
+            }}
+            style={{
+              color: "#1d1d1d",
+              width: "200px",
+              border: shouldShowError ? "1px solid red" : undefined,
             }}
           />
         ) : (

@@ -194,7 +194,6 @@ export const formFields = [
     options: [
       { label: "Opción A", value: "A" },
       { label: "Opción B", value: "B" },
-      { label: "Opción C", value: "C" },
     ],
     config: {
       requiredLabel: false,
@@ -210,7 +209,6 @@ export const formFields = [
     options: [
       { label: "Masculino", value: "male" },
       { label: "Femenino", value: "female" },
-      { label: "Otro", value: "other" },
     ],
     config: {
       requiredLabel: true,
