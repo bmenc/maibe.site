@@ -1,4 +1,3 @@
-
 "use client";
 
 import * as React from "react";
@@ -8,12 +7,12 @@ import { type ExampleProps } from "@blueprintjs/docs-theme";
 
 
 export function MenuExample(props: ExampleProps) {
-console.log('props :', props);
     const [count, setCount] = React.useState(0);
     const [size] = React.useState<Size>("medium");
 
-
     return (
+        <div style={{ margin: "5px", marginLeft: "100px", zIndex: 9999 }}>
+
             <Menu className={Classes.ELEVATION_1} size={size}>
                 <MenuItem icon={<PalantirLogo />} text="Custom SVG icon" />
                 <MenuDivider />
@@ -29,6 +28,7 @@ console.log('props :', props);
                 />
                 <MenuItem icon="cog" labelElement={<Icon icon="share" />} text="Settings..." intent="primary" />
             </Menu>
+        </div>
     );
 }
 
