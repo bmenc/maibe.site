@@ -1,8 +1,9 @@
 "use client";
 import { MenuExample } from "./menuExample";
+import { BreadcrumbsComponent } from "./BreadcrumbsComponent"; // Import the new component
 import * as React from "react";
 import ReactDOM from "react-dom";
-import { Alignment, Button, Navbar, NavbarDivider, NavbarGroup, NavbarHeading, Breadcrumbs } from "@blueprintjs/core";
+import { Alignment, Button, Navbar, NavbarDivider, NavbarGroup, NavbarHeading } from "@blueprintjs/core";
 import menuData from "./data.json";
 
 export const NavbarExample: React.FC = () => {
@@ -63,14 +64,8 @@ export const NavbarExample: React.FC = () => {
                     ))}
                 </NavbarGroup>
             </Navbar>
-            <Navbar style={{ height: "32px", backgroundColor: "#f5f5f5", padding: "0 10px" }}>
-                <Breadcrumbs
-                    items={[
-                        { text: "Home" },
-                        { text: "Donantes" },
-                    ]}
-                />
-            </Navbar>
+            <BreadcrumbsComponent
+            />
         </>
     );
 };
