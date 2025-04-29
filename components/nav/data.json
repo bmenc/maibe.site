@@ -15,7 +15,6 @@
             { "name": "Reimpresión de Etiquetas", "url": "/donantes/reimpresion-etiquetas" },
             { "name": "Reimpresión de Etiquetas Múltiple", "url": "/donantes/reimpresion-etiquetas-multiple" },
             { "name": "Entrada Bolsas Externas", "url": "/donantes/entrada-bolsas-externas" },
-            { "name": "Registro", "url": "/donantes/registro" },
             { "name": "Muestras", "url": "/donantes/muestras" },
             { "name": "Buscar Donador", "url": "/donantes/buscar-donador" },
             { "name": "Fusión Donador", "url": "/donantes/fusion-donador" },

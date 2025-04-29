@@ -4,20 +4,22 @@ import { Breadcrumbs } from "@blueprintjs/core";
 import Link from "next/link";
 
 export const BreadcrumbsComponent: React.FC = () => {
-    const calculateBreadcrumbs = () => {
-        const pathSegments = window.location.pathname
-            .split("/")
-            .filter((segment) => segment);
-
-        return [{ text: "Inicio", href: "/" }, ...pathSegments.map((segment, index) => ({
-            text: segment.replace(/-/g, " ").charAt(0).toUpperCase() + segment.replace(/-/g, " ").slice(1),
-            href: "/" + pathSegments.slice(0, index + 1).join("/"),
-        }))];
-    };
-
-    const [breadcrumbItems, setBreadcrumbItems] = React.useState(calculateBreadcrumbs);
+    const [breadcrumbItems, setBreadcrumbItems] = React.useState<{ text: string; href: string }[]>([]);
 
     React.useEffect(() => {
+        const calculateBreadcrumbs = () => {
+            const pathSegments = window.location.pathname
+                .split("/")
+                .filter((segment) => segment);
+
+            return [{ text: "Inicio", href: "/" }, ...pathSegments.map((segment, index) => ({
+                text: segment.replace(/-/g, " ").charAt(0).toUpperCase() + segment.replace(/-/g, " ").slice(1),
+                href: "/" + pathSegments.slice(0, index + 1).join("/"),
+            }))];
+        };
+
+        setBreadcrumbItems(calculateBreadcrumbs());
+
         const updateBreadcrumbs = () => {
             setBreadcrumbItems(calculateBreadcrumbs());
         };
