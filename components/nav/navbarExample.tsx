@@ -54,7 +54,9 @@ export const NavbarExample: React.FC<NavbarExampleProps> = ({ id }) => {
                             {openMenu === menu.title &&
                                 ReactDOM.createPortal(
                                     <div
-                                        ref={(el) => (menuRefs.current[menu.title] = el)}
+                                        ref={(el) => {
+                                            menuRefs.current[menu.title] = el;
+                                        }}
                                         style={{
                                             position: "absolute",
                                             top: buttonRefs.current[menu.title]?.getBoundingClientRect().bottom || 0,

@@ -1,6 +1,6 @@
 "use client";
 import { ChangeEvent, useState } from "react";
-import db from "./db.json";
+import data from "./data.json";
 
 import * as XLSX from "xlsx";
 import { PDFDocument, StandardFonts, rgb } from 'pdf-lib'
@@ -102,12 +102,12 @@ const columns = [
 ];
 
 export default function Page() {
-  const sanitizedData = db.res.map((item) => ({
+  const sanitizedData = data.res.map((item) => ({
     ...item,
     ife_number: item.ife_number ?? null,
   })) as Donation[];
 
-  const [data] = useState<Donation[]>(sanitizedData);
+  const [tableData] = useState<Donation[]>(sanitizedData);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [pagination, setPagination] = useState<PaginationState>({
     pageIndex: 0,
@@ -115,7 +115,7 @@ export default function Page() {
   });
 
   const table = useReactTable({
-    data,
+    data: tableData,
     columns,
     getCoreRowModel: getCoreRowModel(),
     state: { columnFilters, pagination },

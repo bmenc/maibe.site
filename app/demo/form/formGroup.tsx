@@ -6,12 +6,12 @@ import { useForm, Controller } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CustomField } from "@/app/demo/form/customField";
-import { formFields } from "./data";
+import data from "./data.json"; // Updated import
 
 const generateSchema = () => {
   const schema: Record<string, z.ZodTypeAny> = {};
   
-  formFields.forEach((field) => {
+  data.forEach((field) => {
     let fieldSchema = z.string();
     
     if (field.required) {
@@ -58,7 +58,7 @@ export function FormGroup({ title }: { title: string }) {
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(formSchema),
-    defaultValues: formFields.reduce(
+    defaultValues: data.reduce(
       (acc, field) => ({ ...acc, [field.name]: "" }),
       {} as FormData
     ),
@@ -74,7 +74,7 @@ export function FormGroup({ title }: { title: string }) {
       <Divider />
       <form onSubmit={handleSubmit(onSubmit)} className="w-full flex flex-col gap-4">
         <div className="w-full flex flex-wrap gap-4">
-          {formFields.map((field) => (
+          {data.map((field) => (
             <Controller
               key={field.name}
               name={field.name as keyof FormData}
