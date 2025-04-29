@@ -1,0 +1,53 @@
+[
+    {
+        "title": "Donantes",
+        "submenus": [
+            { "name": "Agenda", "url": "/donantes/agenda" },
+            { "name": "Trabajo Social", "url": "/donantes/trabajo-social" },
+            { "name": "Registro", "url": "/donantes/registro" },
+            { "name": "Signos Vitales", "url": "/donantes/signos-vitales" },
+            { "name": "Biometría Hemática", "url": "/donantes/biometria-hematica" },
+            { "name": "Historia Clínica", "url": "/donantes/historia-clinica" },
+            { "name": "Extracciones", "url": "/donantes/extracciones" },
+            { "name": "Resumen General", "url": "/donantes/resumen-general" },
+            { "name": "Banco de Células", "url": "/donantes/banco-celulas" },
+            { "name": "Liberar Candados", "url": "/donantes/liberar-candados" },
+            { "name": "Reimpresión de Etiquetas", "url": "/donantes/reimpresion-etiquetas" },
+            { "name": "Reimpresión de Etiquetas Múltiple", "url": "/donantes/reimpresion-etiquetas-multiple" },
+            { "name": "Entrada Bolsas Externas", "url": "/donantes/entrada-bolsas-externas" },
+            { "name": "Registro", "url": "/donantes/registro" },
+            { "name": "Muestras", "url": "/donantes/muestras" },
+            { "name": "Buscar Donador", "url": "/donantes/buscar-donador" },
+            { "name": "Fusión Donador", "url": "/donantes/fusion-donador" },
+            { "name": "Encuesta", "url": "/donantes/encuesta" }
+        ]
+    },
+    {
+        "title": "Laboratorio",
+        "submenus": []
+    },
+    {
+        "title": "Procesado",
+        "submenus": []
+    },
+    {
+        "title": "Almacén",
+        "submenus": []
+    },
+    {
+        "title": "Distribución",
+        "submenus": []
+    },
+    {
+        "title": "Pacientes",
+        "submenus": []
+    },
+    {
+        "title": "Promoción",
+        "submenus": []
+    },
+    {
+        "title": "IMSS",
+        "submenus": []
+    }
+]
