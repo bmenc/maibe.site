@@ -6,7 +6,11 @@ import ReactDOM from "react-dom";
 import { Alignment, Button, Navbar, NavbarDivider, NavbarGroup, NavbarHeading } from "@blueprintjs/core";
 import menuData from "./data.json";
 
-export const NavbarExample: React.FC = () => {
+interface NavbarExampleProps {
+  id: string;
+}
+
+export const NavbarExample: React.FC<NavbarExampleProps> = ({ id }) => {
     const [openMenu, setOpenMenu] = React.useState<string | null>(null);
     const menuRefs = React.useRef<Record<string, HTMLDivElement | null>>({});
     const buttonRefs = React.useRef<Record<string, HTMLButtonElement | null>>({});
@@ -33,14 +37,16 @@ export const NavbarExample: React.FC = () => {
 
     return (
         <>
-            <Navbar>
+            <Navbar id={id}>
                 <NavbarGroup align={Alignment.START}>
                     <NavbarHeading>Admin</NavbarHeading>
                     <NavbarDivider />
                     {menuData.map((menu) => (
                         <React.Fragment key={menu.title}>
                             <Button
-                                ref={(el) => (buttonRefs.current[menu.title] = el)}
+                                ref={(el) => {
+                                    buttonRefs.current[menu.title] = el;
+                                }}
                                 text={menu.title}
                                 variant="minimal"
                                 onClick={() => setOpenMenu(openMenu === menu.title ? null : menu.title)}
