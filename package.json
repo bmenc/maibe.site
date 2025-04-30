@@ -14,8 +14,12 @@
     "@blueprintjs/select": "^5.3.19",
     "@hookform/resolvers": "^5.0.1",
     "@tanstack/react-table": "^8.21.3",
+    "axios": "^1.9.0",
+    "bcryptjs": "^3.0.2",
     "downloadjs": "^1.4.7",
+    "mongoose": "^8.14.1",
     "next": "^14.2.28",
+    "next-auth": "^4.24.11",
     "pdf-lib": "^1.17.1",
     "react": "^18",
     "react-dom": "^18",
@@ -25,6 +29,7 @@
     "zod": "^3.24.3"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
     "@types/downloadjs": "^1.4.6",
     "@types/node": "^20",
     "@types/react": "^18",

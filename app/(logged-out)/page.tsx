@@ -5,9 +5,6 @@ import Link from "next/link";
 export default function LoggedOutPage() {
   return (
     <>
-      <h1 className="flex gap-2 items-center">
-        Admin
-      </h1>
       <div className="flex gap-2 items-center">
         <Link href="/login">
           <Button text={"Log in"} />

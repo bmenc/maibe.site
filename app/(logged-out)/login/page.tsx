@@ -6,7 +6,7 @@ export default function LoginPage() {
   return (
     <>
       <h1 className="flex gap-2 items-center">
-        Admin Login
+        Login
       </h1>
       <form className="flex flex-col gap-4">
         <InputGroup placeholder="Email" type="email" />
