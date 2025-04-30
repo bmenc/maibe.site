@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import { NavbarExample } from "@/components/nav/navbarExample";
 
 export const metadata: Metadata = {
   title: "Admin",
@@ -14,6 +14,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <NavbarExample id={""}/>
         {children}
       </body>
     </html>
