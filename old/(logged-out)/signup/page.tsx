@@ -6,7 +6,6 @@ import axios from "axios";
 
 export default function SignupPage() {
   const [formData, setFormData] = useState({
-    username: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -33,16 +32,9 @@ export default function SignupPage() {
   return (
     <>
       <h1 className="flex gap-2 items-center">
-        Signup
+        Sign Up
       </h1>
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-        <InputGroup
-          placeholder="Username"
-          type="text"
-          name="username"
-          value={formData.username}
-          onChange={handleChange}
-        />
         <InputGroup
           placeholder="Email"
           type="email"

@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
-import User from "@/models/user";
-import { connectDB } from "@/libs/mongodb";
+import User from "@/old/models/user";
+import { connectDB } from "@/old/libs/mongodb";
 import bcrypt from "bcryptjs";
 
 export async function POST(request: Request) {
-    const { username, email, password } = await request.json();
+    const { email, password } = await request.json();
     console.log('Received email:', email);
 
     try {
@@ -23,7 +23,7 @@ export async function POST(request: Request) {
         const hashedPassword = await bcrypt.hash(password, 10);
         console.log("Password hashed successfully");
 
-        const user = new User({ username, email, password: hashedPassword });
+        const user = new User({ email, password: hashedPassword });
         const savedUser = await user.save();
         console.log("User saved successfully:", savedUser);
 

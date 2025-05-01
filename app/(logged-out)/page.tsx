@@ -1,18 +1,20 @@
 "use client";
+
 import { Button } from "@blueprintjs/core";
 import Link from "next/link";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store/store";
 
-export default function LoggedOutPage() {
+export default function LandingPage() {
+  const buttons = useSelector((state: RootState) => state.buttons);
+
   return (
-    <>
-      <div className="flex gap-2 items-center">
-        <Link href="/login">
-          <Button text={"Log in"} />
+    <section className="flex-group">
+      {buttons.map((item, index) => (
+        <Link key={index} href={`/${item.route}`}>
+          <Button text={item.text} />
         </Link>
-        <Link href="/signup">
-          <Button text={"Sign up"} />
-        </Link>
-      </div>
-    </>
+      ))}
+    </section>
   );
 }
