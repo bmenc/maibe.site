@@ -1,4 +1,3 @@
-// components/FormGenerator.tsx
 import React from "react";
 import { FormGroup, InputGroup, Intent, Button } from "@blueprintjs/core";
 import { useFormik } from "formik";
@@ -18,6 +17,7 @@ interface FormGeneratorProps {
       maxLength?: number;
       pattern?: string;
       email?: boolean;
+      matchWith?: string;
     };
     errorMessages?: Record<string, string>;
     config?: {
@@ -29,7 +29,6 @@ interface FormGeneratorProps {
 }
 
 export const FormGenerator: React.FC<FormGeneratorProps> = ({ elements, onSubmit }) => {
-
     const generateValidationSchema = () => {
     const shape: Record<string, Yup.AnySchema> = {};
     
@@ -60,6 +59,20 @@ export const FormGenerator: React.FC<FormGeneratorProps> = ({ elements, onSubmit
         );
       }
 
+      if (element.validation?.pattern) {
+        validator = validator.matches(
+          new RegExp(element.validation.pattern),
+          element.errorMessages?.pattern || "Formato inválido"
+        );
+      }
+
+      if (element.validation?.matchWith) {
+        validator = validator.oneOf(
+          [Yup.ref(element.validation.matchWith), undefined],
+          element.errorMessages?.matchWith || "Los valores no coinciden"
+        );
+      }
+
       shape[element.name] = validator;
     });
 
@@ -80,7 +93,7 @@ export const FormGenerator: React.FC<FormGeneratorProps> = ({ elements, onSubmit
   });
 
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <form onSubmit={formik.handleSubmit} autoComplete="nope">
       {elements.map((element) => {
         const error = formik.touched[element.name] && formik.errors[element.name];
         const intent = error ? Intent.DANGER : Intent.NONE;
@@ -106,12 +119,13 @@ export const FormGenerator: React.FC<FormGeneratorProps> = ({ elements, onSubmit
               disabled={element.config?.disabled}
               intent={intent}
               style={{ width: "100%", maxWidth: "200px" }}
+              autoComplete="new-password"
             />
           </FormGroup>
         );
       })}
       <Button type="submit" intent={Intent.NONE} disabled={!formik.isValid || formik.isSubmitting}>
-        Enviar
+        Send
       </Button>
     </form>
   );

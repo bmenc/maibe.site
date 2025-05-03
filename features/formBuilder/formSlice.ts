@@ -1,6 +1,14 @@
 // features/formBuilder/formSlice.ts
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+interface FormValidation {
+  minLength?: number;
+  maxLength?: number;
+  pattern?: string;
+  email?: boolean;
+  matchWith?: string;
+}
+
 interface FormElement {
   name: string;
   type: "text" | "email" | "password" | "number";
@@ -14,6 +22,7 @@ interface FormElement {
     maxLength?: number;
     pattern?: string;
     email?: boolean;
+    matchWith?: string;
   };
   errorMessages?: Record<string, string>;
   config?: {
@@ -59,6 +68,57 @@ const initialState: FormPage[] = [
         errorMessages: {
           required: "La contraseña es obligatoria",
           minLength: "Mínimo 8 caracteres"
+        }
+      }
+    ]
+  },
+  {
+    page: "RegisterPage",
+    elements: [
+      {
+        name: "email",
+        type: "email",
+        placeholder: "ejemplo@correo.com",
+        label: "Correo electrónico",
+        required: true,
+        validation: {
+          email: true,
+          minLength: 5
+        },
+        errorMessages: {
+          required: "El correo es obligatorio",
+          email: "Formato de correo inválido",
+          minLength: "Mínimo 5 caracteres"
+        }
+      },
+      {
+        name: "password",
+        type: "password",
+        placeholder: "Crea una contraseña",
+        label: "Contraseña",
+        required: true,
+        validation: {
+          minLength: 8,
+          pattern: "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$"
+        },
+        errorMessages: {
+          required: "La contraseña es obligatoria",
+          minLength: "Mínimo 8 caracteres",
+          pattern: "Debe contener mayúsculas, minúsculas y números"
+        }
+      },
+      {
+        name: "confirmPassword",
+        type: "password",
+        placeholder: "Repite tu contraseña",
+        label: "Confirmar contraseña",
+        required: true,
+        validation: {
+          matchWith: "password"
+        },
+        errorMessages: {
+          required: "Debes confirmar tu contraseña",
+          matchWith: "Las contraseñas no coinciden"
         }
       }
     ]

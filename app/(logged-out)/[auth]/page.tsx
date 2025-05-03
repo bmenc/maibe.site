@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import LoginPage from "./login";
+import RegisterPage from "./register";
 
 export default function AuthPage() {
   const pathname = usePathname();
@@ -12,7 +13,7 @@ export default function AuthPage() {
   }
 
   if (auth === "register") {
-    return <div>Register Page</div>;
+    return <RegisterPage/>;
   }
 
   return <div>404 - Page Not Found</div>;
