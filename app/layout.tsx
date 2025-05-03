@@ -1,9 +1,9 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import StoreProvider from "./storeProvider";
+import StoreProvider from "@/store/redux/storeProvider";
 
 export const metadata: Metadata = {
-  title: "Demo",
+  title: "Admin | Preproduction",
   description: "",
 };
 
