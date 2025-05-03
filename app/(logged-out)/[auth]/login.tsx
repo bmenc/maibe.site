@@ -2,7 +2,7 @@
 
 import { useSelector } from "react-redux";
 import { FormGenerator } from "@/components/FormGenerator";
-import { RootState } from "@/store/redux/store";
+import { RootState } from "@/store/store";
 
 export default function LoginPage() {
   const loginForm = useSelector((state: RootState) => 

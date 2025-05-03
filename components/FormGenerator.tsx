@@ -1,6 +1,6 @@
 // components/FormGenerator.tsx
 import React from "react";
-import { FormGroup, InputGroup, Intent } from "@blueprintjs/core";
+import { FormGroup, InputGroup, Intent, Button } from "@blueprintjs/core";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
@@ -110,13 +110,9 @@ export const FormGenerator: React.FC<FormGeneratorProps> = ({ elements, onSubmit
           </FormGroup>
         );
       })}
-      <button 
-        type="submit" 
-        className="bp3-button bp3-intent-primary"
-        disabled={!formik.isValid || formik.isSubmitting}
-      >
+      <Button type="submit" intent={Intent.NONE} disabled={!formik.isValid || formik.isSubmitting}>
         Enviar
-      </button>
+      </Button>
     </form>
   );
 };

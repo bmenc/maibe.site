@@ -1,6 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import StoreProvider from "@/store/redux/storeProvider";
+import StoreProvider from "@/store/storeProvider";
 
 export const metadata: Metadata = {
   title: "Admin | Preproduction",
