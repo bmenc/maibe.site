@@ -1,6 +1,6 @@
 "use server";
-import { connectDB } from "@/store/db/libs/mongodb";
-import User from "@/store/db/models/user";
+import { connectDB } from "@/database/libs/mongodb";
+import User from "@/database/models/user";
 import bcrypt from "bcrypt";
 
 export async function registerUser(values: { email: string; password: string }) {
