@@ -1,4 +1,3 @@
-// features/formBuilder/formSlice.ts
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface FormValidation {

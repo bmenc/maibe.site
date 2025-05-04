@@ -30,10 +30,10 @@ export async function registerUser(values: { email: string; password: string }) 
 }
 
 export async function fetchUserByIdOrEmail(identifier: string) {
-  "use server"; // Indica que esta función es una Server Action
+  "use server";
 
   try {
-    await mongoose.connect(process.env.MONGODB_URI!); // Conexión a MongoDB
+    await mongoose.connect(process.env.MONGODB_URI!);
 
     const query = isValidObjectId(identifier)
       ? { _id: identifier }

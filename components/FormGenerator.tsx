@@ -106,7 +106,7 @@ export const FormGenerator: React.FC<FormGeneratorProps> = ({ elements, onSubmit
             labelInfo={element.config?.requiredLabel ? "(requerido)" : undefined}
             helperText={error || element.helperText}
             intent={intent}
-            style={{ marginBottom: "1rem" }}
+            style={{ marginBottom: "0.5rem" }}
           >
             <InputGroup
               id={element.name}
@@ -124,7 +124,7 @@ export const FormGenerator: React.FC<FormGeneratorProps> = ({ elements, onSubmit
           </FormGroup>
         );
       })}
-      <Button type="submit" intent={Intent.NONE} disabled={!formik.isValid || formik.isSubmitting}>
+      <Button type="submit" style={{ marginTop: "0.5rem" }} intent={Intent.NONE} disabled={!formik.isValid || formik.isSubmitting}>
         Send
       </Button>
     </form>
