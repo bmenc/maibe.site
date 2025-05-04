@@ -6,7 +6,7 @@ import RegisterPage from "./register";
 
 export default function AuthPage() {
   const pathname = usePathname();
-  const auth = pathname.split("/")[1];
+  const auth = pathname ? pathname.split("/")[1] : "";
 
   if (auth === "login") {
     return <LoginPage/>;
