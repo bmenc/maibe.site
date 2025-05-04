@@ -2,6 +2,7 @@
 import { connectDB } from "@/database/libs/mongodb";
 import User from "@/database/models/user";
 import bcrypt from "bcrypt";
+import mongoose, { isValidObjectId } from "mongoose";
 
 export async function registerUser(values: { email: string; password: string }) {
   const { email, password } = values;
@@ -26,4 +27,27 @@ export async function registerUser(values: { email: string; password: string }) 
   await newUser.save();
 
   return { message: "User registered successfully" };
+}
+
+export async function fetchUserByIdOrEmail(identifier: string) {
+  "use server"; // Indica que esta función es una Server Action
+
+  try {
+    await mongoose.connect(process.env.MONGODB_URI!); // Conexión a MongoDB
+
+    const query = isValidObjectId(identifier)
+      ? { _id: identifier }
+      : { email: identifier };
+
+    const user = await User.findOne(query);
+
+    if (!user) {
+      throw new Error("User not found");
+    }
+
+    return user;
+  } catch (error) {
+    console.error("Error fetching user:", error);
+    throw error;
+  }
 }
