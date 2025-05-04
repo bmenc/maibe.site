@@ -44,30 +44,30 @@ const initialState: FormPage[] = [
         name: "email",
         type: "email",
         placeholder: "Email",
-        label: "Correo electrónico",
+        label: "Email",
         required: true,
         validation: {
           email: true,
           minLength: 5
         },
         errorMessages: {
-          required: "El correo es obligatorio",
-          email: "Formato de correo inválido",
-          minLength: "Mínimo 5 caracteres"
+          required: "Email is required",
+          email: "Invalid email format",
+          minLength: "Minimum 5 characters"
         }
       },
       {
         name: "password",
         type: "password",
-        placeholder: "Contraseña",
-        label: "Contraseña",
+        placeholder: "Password",
+        label: "Password",
         required: true,
         validation: {
           minLength: 8
         },
         errorMessages: {
-          required: "La contraseña es obligatoria",
-          minLength: "Mínimo 8 caracteres"
+          required: "Password is required",
+          minLength: "Minimum 8 characters"
         }
       }
     ]
@@ -78,47 +78,47 @@ const initialState: FormPage[] = [
       {
         name: "email",
         type: "email",
-        placeholder: "ejemplo@correo.com",
-        label: "Correo electrónico",
+        placeholder: "example@email.com",
+        label: "Email",
         required: true,
         validation: {
           email: true,
           minLength: 5
         },
         errorMessages: {
-          required: "El correo es obligatorio",
-          email: "Formato de correo inválido",
-          minLength: "Mínimo 5 caracteres"
+          required: "Email is required",
+          email: "Invalid email format",
+          minLength: "Minimum 5 characters"
         }
       },
       {
         name: "password",
         type: "password",
-        placeholder: "Crea una contraseña",
-        label: "Contraseña",
+        placeholder: "Create a password",
+        label: "Password",
         required: true,
         validation: {
           minLength: 8,
           pattern: "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$"
         },
         errorMessages: {
-          required: "La contraseña es obligatoria",
-          minLength: "Mínimo 8 caracteres",
-          pattern: "Debe contener mayúsculas, minúsculas y números"
+          required: "Password is required",
+          minLength: "Minimum 8 characters",
+          pattern: "Must contain uppercase, lowercase, and numbers"
         }
       },
       {
         name: "confirmPassword",
         type: "password",
-        placeholder: "Repite tu contraseña",
-        label: "Confirmar contraseña",
+        placeholder: "Repeat your password",
+        label: "Confirm Password",
         required: true,
         validation: {
           matchWith: "password"
         },
         errorMessages: {
-          required: "Debes confirmar tu contraseña",
-          matchWith: "Las contraseñas no coinciden"
+          required: "You must confirm your password",
+          matchWith: "Passwords do not match"
         }
       }
     ]
