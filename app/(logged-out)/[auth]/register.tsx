@@ -2,17 +2,24 @@
 import { useSelector } from "react-redux";
 import { FormGenerator } from "@/components/FormGenerator";
 import { RootState } from "@/store/store";
+import { registerUser } from "@/server-actions/auth";
 
 export default function RegisterPage() {
   const registerForm = useSelector((state: RootState) => 
     state.formBuilder.find(page => page.page === "RegisterPage")
   );
 
-  const handleSubmit = (values: Record<string, string>) => {
-    console.log("Registro enviado:", {
-      email: values.email,
-      password: values.password
-    });
+  const handleSubmit = async (values: Record<string, string>) => {
+    try {
+      const { email, password } = values;
+      if (!email || !password) {
+        throw new Error("Email and password are required");
+      }
+      const response = await registerUser({ email, password });
+      console.log("Registration successful:", response);
+    } catch (error) {
+      console.error("Registration failed:", error);
+    }
   };
 
   if (!registerForm) return <div>Formulario no configurado</div>;
