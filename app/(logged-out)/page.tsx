@@ -4,12 +4,16 @@ import Link from "next/link";
 export default function LandingPage() {
   return (
     <section className="flex-group">
-      <Link href="/login">
-        <Button text="Log In" />
+      <Link href="/demo/nav">
+        <Button text="Nav" />
       </Link>
-      <Link href="/register">
-        <Button text="Register" />
+      <Link href="/demo/form">
+        <Button text="Form" />
       </Link>
+      <Link href="/demo/table">
+        <Button text="Table" />
+      </Link>
+      
     </section>
   );
 }
